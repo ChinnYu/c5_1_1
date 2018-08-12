@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.mapping.bookMapper">
+    <!--
+        根據id查詢得到一個book物件
+     -->
+    <select id="getBookById" resultType="com.jason.model.Book">
+        select book_Id, book_title, book_typename, book_price, book_state from www_book where book_Id=#{id}
+    </select>
+    <select id="getAllBooks" resultType="com.jason.model.Book">
+        select book_Id, book_title, book_typename, book_price, book_state from www_book
+    </select>
+    <insert id="add" parameterType="com.jason.model.Book">
+        insert into www_book (book_Id, book_title, book_typename, book_price, book_state) values (NULL,#{book_title}, #{book_typename}, #{book_price}, #{book_state})
+    </insert>
+    <update id="update" parameterType="com.jason.model.Book">
+        update www_book set book_title=#{book_title},book_typename=#{book_typename},book_price=#{book_price},book_state=#{book_state} where book_Id=#{book_Id}
+    </update>
+    <delete id="deleteById">
+        delete from www_book where id=#{id}
+    </delete>
+</mapper>
+
