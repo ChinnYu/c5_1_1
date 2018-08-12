@@ -1,6 +1,7 @@
 package com.jason.dao2;
 
 import com.jason.model.Book;
+import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
@@ -14,26 +15,61 @@ public class BookDaoImpl implements BookDao{
 
     @Override
     public Book getBookById(int id) {
-        return null;
+        SqlSession session = null;
+        try {
+            session = MyBatisUtil.getSession();
+            BookDao dao = session.getMapper(BookDao.class);
+            return dao.getBookById(id);
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public List<Book> getAllBooks() {
-        return null;
+        SqlSession session = null;
+        try {
+            session = MyBatisUtil.getSession();
+            BookDao dao = session.getMapper(BookDao.class);
+            return dao.getAllBooks();
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public int add(Book book) {
-        return 0;
+        SqlSession session = null;
+        try {
+            session = MyBatisUtil.getSession();
+            BookDao dao = session.getMapper(BookDao.class);
+            return dao.add(book);
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public int update(Book book) {
-        return 0;
+        SqlSession session = null;
+        try {
+            session = MyBatisUtil.getSession();
+            BookDao dao = session.getMapper(BookDao.class);
+            return dao.update(book);
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public int deleteById(int id) {
-        return 0;
+        SqlSession session = null;
+        try {
+            session = MyBatisUtil.getSession();
+            BookDao dao = session.getMapper(BookDao.class);
+            return dao.deleteById(id);
+        }finally {
+            session.close();
+        }
     }
 }

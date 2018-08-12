@@ -13,7 +13,7 @@ public abstract class MyBatisUtil {
     public static SqlSessionFactory getSqlSessionFactory(){
         if(factory==null){
         // 獲得環境設定檔流
-        InputStream config = MyBatisUtil.class.getClassLoader().getResourceAsStream("MyBatisCfg.xml");
+        InputStream config = MyBatisUtil.class.getClassLoader().getResourceAsStream("mybatis.xml");
         // 創建sql會話工廠
         factory = new SqlSessionFactoryBuilder().build(config);
         }
