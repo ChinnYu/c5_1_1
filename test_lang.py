@@ -5,6 +5,7 @@ from langchain_community.document_loaders import UnstructuredMarkdownLoader
 
 @task(retries=2)
 def check_file(filename: str):
+    logger.info("%s filename 🤓:", filename)
     LOADER_DICT = {
         "UnstructuredHTMLLoader": ['.html'],
         "UnstructuredMarkdownLoader": ['.md'],
@@ -75,5 +76,5 @@ def data_process(filename: str = "PrefectHQ/prefect"):
     else:
         print(f"File extension not supported for '{filename}'.")
 
-if __name__ == "__main__":
-    data_process(filename="./test.pdf")
+# if __name__ == "__main__":
+#     data_process(filename="./test.pdf")
