@@ -52,6 +52,12 @@ def transformer_file(filename: str, loader: str):
 
 @task(retries=2)
 def data_loader(filename: str):
+    from prefect.filesystems import LocalFileSystem
+
+    local_file_system_block = LocalFileSystem.load("test-local-file")
+
+    logger = get_run_logger()
+    logger.info("%s get_directory 🤓:", local_file_system_block.get_directory())
     loader = UnstructuredMarkdownLoader(filename)
     data = loader.load()
     return data
@@ -77,5 +83,5 @@ def data_process(filename: str = "PrefectHQ/prefect"):
     else:
         print(f"File extension not supported for '{filename}'.")
 
-# if __name__ == "__main__":
-#     data_process(filename="./test.pdf")
+if __name__ == "__main__":
+    data_process(filename="./test.pdf")
