@@ -5,6 +5,7 @@ from langchain_community.document_loaders import UnstructuredMarkdownLoader
 
 @task(retries=2)
 def check_file(filename: str):
+    logger = get_run_logger()
     logger.info("%s filename 🤓:", filename)
     LOADER_DICT = {
         "UnstructuredHTMLLoader": ['.html'],
