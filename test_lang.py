@@ -82,6 +82,6 @@ def data_process(filename: str = "PrefectHQ/prefect"):
         logger.info("%s data statistics 🤓:", data)
     else:
         print(f"File extension not supported for '{filename}'.")
-
+    return data
 if __name__ == "__main__":
     data_process(filename="./test.pdf")
