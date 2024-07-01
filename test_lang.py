@@ -50,7 +50,7 @@ def transformer_file(filename: str, loader: str):
     else:
         return 1
 
-@task(retries=2)
+@task(retries=2,persist_result=True, result_storage_key="my_task.json")
 def data_loader(filename: str):
     from prefect.filesystems import LocalFileSystem
 
