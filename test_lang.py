@@ -87,11 +87,11 @@ def data_process(filename: str = "PrefectHQ/prefect"):
     # return data
 
     if flag:
-        state = data_loader("./test.md", wait_for=[flag],return_state=True)
+        future = data_loader.submit("./test.md", wait_for=[flag],return_state=True)
         logger = get_run_logger()
-        logger.info("%s data statistics 🤓:", state.result())
+        logger.info("%s data statistics 🤓:", future.result())
     else:
         print(f"File extension not supported for '{filename}'.")
-    return state.result()
+    return future.result()
 if __name__ == "__main__":
     data_process(filename="./test.pdf")
