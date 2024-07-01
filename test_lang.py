@@ -76,12 +76,22 @@ def data_process(filename: str = "PrefectHQ/prefect"):
     #     print(f"File extension not supported for '{filename}'.")
     flag = transformer_file.submit(filename, loader, wait_for=[loader])
     data = None
+
+
+    # if flag:
+    #     data = data_loader("./test.md", wait_for=[flag])
+    #     logger = get_run_logger()
+    #     logger.info("%s data statistics 🤓:", data)
+    # else:
+    #     print(f"File extension not supported for '{filename}'.")
+    # return data
+
     if flag:
-        data = data_loader("./test.md", wait_for=[flag])
+        state = data_loader("./test.md", wait_for=[flag],return_state=True)
         logger = get_run_logger()
-        logger.info("%s data statistics 🤓:", data)
+        logger.info("%s data statistics 🤓:", state.result())
     else:
         print(f"File extension not supported for '{filename}'.")
-    return data
+    return state.result()
 if __name__ == "__main__":
     data_process(filename="./test.pdf")
