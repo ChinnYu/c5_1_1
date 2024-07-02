@@ -54,10 +54,10 @@ def transformer_file(filename: str, loader: str):
 def data_loader(filename: str):
     from prefect.filesystems import LocalFileSystem
 
-    local_file_system_block = LocalFileSystem.load("test-windows")
+    # local_file_system_block = LocalFileSystem.load("test-windows")
 
     logger = get_run_logger()
-    logger.info("%s get_directory 🤓:", local_file_system_block.get_directory())
+    # logger.info("%s get_directory 🤓:", local_file_system_block.get_directory())
     loader = UnstructuredMarkdownLoader(filename)
     data = loader.load()
     return data
