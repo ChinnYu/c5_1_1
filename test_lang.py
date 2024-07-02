@@ -87,7 +87,7 @@ def data_process(filename: str = "PrefectHQ/prefect"):
     # return data
 
     if flag:
-        future = data_loader.submit("./test.md", wait_for=[flag],return_state=True)
+        future = data_loader.submit("/pdata/test.md", wait_for=[flag],return_state=True)
         logger = get_run_logger()
         logger.info("%s data statistics 🤓:", future.result())
     else:
